@@ -19,7 +19,7 @@ Versiones:
                       Optimizado el algoritmo para evitar el escaneo de
                           directorios excluidos, usando la poda de os.walk.
                       Añadido Loguru para mensajes por pantalla
-                      Añadido fichero de salida con formato ISO 8601.
+                      Añadido fichero de salida con formato ISO 8601.
                       Código adecuado a normas de estilo PEP 8 y PEP 257.
                       Optimización SWBOK con escaneo en una sola pasada
                       Optimización SWBOK para hash incremental de archivos
@@ -34,7 +34,6 @@ import sys
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
-
 from loguru import logger
 from tqdm import tqdm
 
@@ -114,8 +113,11 @@ AUTHOR
 # Constantes para las exclusiones por defecto
 DEFAULT_EXCLUDE_DIRS = [
     Path("C:\\Windows"),
+    Path("C:\\Archivos de Programa"),
+    Path("C:\\Archivos de Programa (x86)"),
     Path("C:\\Program Files"),
     Path("C:\\Program Files (x86)"),
+    Path("C:\\Users\Rafael"),
     Path("C:\\$Recycle.Bin"),
     Path("C:\\hiberfil.sys"),
     Path("C:\\pagefile.sys"),
