@@ -17,15 +17,15 @@
 #                       Refactorización para usar argparse.
 #                       Añadida barra de progreso utilizando la librería tqdm.
 #                       Optimizado el algoritmo para evitar el escaneo de
-#                       directorios excluidos, usando la poda de os.walk.
+#                           directorios excluidos, usando la poda de os.walk.
 #                       Añadido Loguru para mensajes por pantalla
 #                       Añadido fichero de salida con formato ISO 8601.
 #                       Código adecuado a normas de estilo PEP 8 y PEP 257.
 #                       Optimización SWBOK con escaneo en una sola pasada
 #                       Optimización SWBOK para hash incremental de archivos
-#                       grandes usando 64ks de búfer sin consumir RAM
+#                           grandes usando 64ks de búfer sin consumir RAM
 #                       Optimización SWBOK para  poda de directorio, evitando
-#                       descender en subdirectorios en exclusión.
+#                           descender en subdirectorios en exclusión.
 #
 # Licencia: Apache License 2.0
 
