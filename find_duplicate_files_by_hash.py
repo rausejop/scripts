@@ -1,33 +1,32 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Fichero: find_duplicate_files_by_hash.py
-#
-# Descripción: Script para escanear directorios y detectar archivos duplicados
-#              basándose en el hash criptográfico (SHA-256) de su contenido.
-#              Los mensajes por pantalla usan loguru y la salida a fichero
-#              usa formato ISO 8601.
-# Autor:       Rafael Ausejo Prieto
-# Fecha:       31 de agosto de 2025
-# Versión:     2.0.0
-#
-# Historial de Versiones:
-#   1.0.0 - 11/08/2025: Implementación inicial del escaneo de duplicados.
-#   2.0.0 - 31/08/2025: Añadida lista de directorios exentos de verificación.
-#                       Refactorización para usar argparse.
-#                       Añadida barra de progreso utilizando la librería tqdm.
-#                       Optimizado el algoritmo para evitar el escaneo de
-#                           directorios excluidos, usando la poda de os.walk.
-#                       Añadido Loguru para mensajes por pantalla
-#                       Añadido fichero de salida con formato ISO 8601.
-#                       Código adecuado a normas de estilo PEP 8 y PEP 257.
-#                       Optimización SWBOK con escaneo en una sola pasada
-#                       Optimización SWBOK para hash incremental de archivos
-#                           grandes usando 64ks de búfer sin consumir RAM
-#                       Optimización SWBOK para  poda de directorio, evitando
-#                           descender en subdirectorios en exclusión.
-#
-# Licencia: Apache License 2.0
+"""
+Fichero: find_duplicate_files_by_hash.py
+Descripción: Script para escanear directorios y detectar archivos duplicados
+             basándose en el hash criptográfico (SHA-256) de su contenido.
+             Los mensajes por pantalla usan loguru y la salida a fichero
+             usa formato ISO 8601.
+Autor:       Rafael Ausejo Prieto
+Fecha:       31 de agosto de 2025
+Versión:     2.0.0
+Licencia:    Apache License 2.0
+Versiones:
+  1.0.0 - 11/08/2025: Implementación inicial del escaneo de duplicados.
+  2.0.0 - 31/08/2025: Añadida lista de directorios exentos de verificación.
+                      Refactorización para usar argparse.
+                      Añadida barra de progreso utilizando la librería tqdm.
+                      Optimizado el algoritmo para evitar el escaneo de
+                          directorios excluidos, usando la poda de os.walk.
+                      Añadido Loguru para mensajes por pantalla
+                      Añadido fichero de salida con formato ISO 8601.
+                      Código adecuado a normas de estilo PEP 8 y PEP 257.
+                      Optimización SWBOK con escaneo en una sola pasada
+                      Optimización SWBOK para hash incremental de archivos
+                          grandes usando 64ks de búfer sin consumir RAM
+                      Optimización SWBOK para  poda de directorio, evitando
+                          descender en subdirectorios en exclusión.
+"""
 
 import hashlib
 import argparse
@@ -44,7 +43,9 @@ logger.remove()
 # Configurar la salida de loguru con colores para la consola
 logger.add(
     sys.stderr,
-    format="<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>"
+    format="<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | "
+           "<level>{level: <8}</level> | <cyan>{name}</cyan>:"
+           "<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>"
 )
 
 # Constantes para la versión y el manpage
